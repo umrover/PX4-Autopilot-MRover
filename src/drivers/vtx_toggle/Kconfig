@@ -1,0 +1,5 @@
+menuconfig DRIVERS_VTX_TOGGLE
+	bool "vtx_toggle"
+	default n
+	---help---
+		Enable support for toggling the VTX via QGC

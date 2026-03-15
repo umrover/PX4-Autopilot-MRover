@@ -157,6 +157,12 @@
 #define GPIO_HEATER_OUTPUT   /* PB9  T17CH1 */ (GPIO_OUTPUT|GPIO_PUSHPULL|GPIO_SPEED_2MHz|GPIO_OUTPUT_CLEAR|GPIO_PORTB|GPIO_PIN9)
 #define HEATER_OUTPUT_EN(on_true)	       px4_arch_gpiowrite(GPIO_HEATER_OUTPUT, (on_true))
 
+/* VTX_TOGGLE
+ * (WIP)
+ */
+#define GPIO_VTX_TOGGLE_OUTPUT // figure out stuff for this
+#define VTX_TOGGLE_OUTPUT_EN(on_true)	       px4_arch_gpiowrite() // immense pain
+
 /* PWM
  */
 #define DIRECT_PWM_OUTPUT_CHANNELS   8
