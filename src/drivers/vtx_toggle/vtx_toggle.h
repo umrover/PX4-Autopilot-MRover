@@ -17,7 +17,7 @@ using namespace time_literals;
 
 // note we will use GPIO in particular to access pins direct
 
-class vtx_toggle
+class vtx_toggle : public ModuleBase<vtx_toggle>, public ModuleParams
 {
 public:
 	// default

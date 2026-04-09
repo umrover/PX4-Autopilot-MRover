@@ -21,10 +21,38 @@ vtx_toggle::vtx_toggle() {}
 
 virtual vtx_toggle::
 
-
+//Sets the vtx state (on, off) using a commandline input
 static int vtx_toggle::custom_command(int argc, char * argv[]) {
-	// do the thingy mabob
+	if (argc > 0 && strcmp("toggle", argv[0] == 0)){
+		if(argc == 1){
+			PX4_INFO("Provide input to toggle on or off")
+		} else if (strcmp("on", argv[1]) == 0){
+			vtx_on();
+		} else if (strcmp("off", argv[1] == 0)){
+			vtx_off();
+		} else{
+			PX4_INFO("invalid input, please turn vtx on or off");
+		}
+	}
+	else {
+		PX4_INFO("Invalid Command");
+	}
+
 }
 
+void vtx_toggle::vtx_on() {
+	VTX_TOGGLE_OUTPUT_EN(false); // Turns on BEC
+}
+void vtx_toggle::vtx_off() {
+	VTX_TOGGLE_OUTPUT_EN(true); // Turns off BEC
+}
+void vtx_toggle::initialize() {
+	// initialize the GPIO pin to output and set it to off
+	px4_arch_configgpio(GPIO_VTX_TOGGLE_OUTPUT);
+	vtx_off();
+}
 
-
+vtx_toggle::~vtx_toggle() {
+	// make sure to turn off the VTX when exiting
+	vtx_off();
+}
